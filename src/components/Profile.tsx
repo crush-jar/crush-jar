@@ -10,13 +10,9 @@ function Profile(props: ProfileProps) {
 
   return (
     <div className='profile'>
-      <div>
-        <button onClick={() => setMentions(mentions + 1)}>Mention crush</button>
-        <span> </span>
-        {props.name}
-        <span className='number-of-mentions'> {mentions} </span>
-      </div>
-      <hr/>
+      <button className='button' onClick={() => setMentions(mentions + 1)}>Mention crush</button>
+      {props.name}
+      <span className='number-of-mentions'> {mentions} </span>
     </div>
   )
 }

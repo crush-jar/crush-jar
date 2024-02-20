@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import money from './images/money.jpg'
+import money from './images/money.png'
 import Profile from './components/Profile'
 
 function App() {
@@ -11,7 +11,6 @@ function App() {
       <Profile name='Anna'/>
       <Profile name='Daphne'/>
       <Profile name='Emmy'/>
-      <img src={money}/>
     </div>
   );
 }
