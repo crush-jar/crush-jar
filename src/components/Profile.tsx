@@ -16,9 +16,7 @@ function Profile(props: ProfileProps) {
       <Container>
         <Row>
           <Col>
-            <div className="button">
-              <Heart animationScale="1.25" activeColor="#DDBE80" className="button" isActive={true} onClick={() => setMentions(mentions + 1)}/>
-            </div>
+            <Heart animationScale="1.5" activeColor="#DDBE80" className="button" isActive={true} onClick={() => setMentions(mentions + 1)}/>
           </Col>
           <Col>
             <span>{props.name}</span>

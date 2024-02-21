@@ -1,15 +1,15 @@
 .profile {
-  margin-bottom: 1vh;
   font-family: Apple Chancery, cursive;
   color: #EEE2E4;
   font-weight: bold;
   justify-content: center;
   text-align: center;
-  font-size: 5vh;
+  align-self: center;
+  font-size: 4.5vh;
 }
 
 .button {
-  height: 8vh;
+  height: 5vh;
   align-self: center;
 }
 
