@@ -1,8 +1,10 @@
 .profile {
-  margin-bottom: 1em;
+  margin-bottom: 1vh;
+  font-family: Apple Chancery, cursive;
+  color: #EEE2E4;
   justify-content: center;
   text-align: center;
-  font-size: 3em;
+  font-size: 5vh;
 }
 
 .button {

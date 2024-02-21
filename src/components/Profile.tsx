@@ -1,6 +1,7 @@
 import './Profile.css'
 import { useState } from 'react'
 import { Button, Col, Container, Row } from "react-bootstrap";
+import Heart from 'react-heart';
 
 type ProfileProps = {
   name: string;
@@ -8,13 +9,16 @@ type ProfileProps = {
 
 function Profile(props: ProfileProps) {
   const [mentions, setMentions] = useState(0)
+  const [heartClicked, setHeartClicked] = useState(false)
 
   return (
     <div className="profile mt-5 text-center">
       <Container>
         <Row>
           <Col>
-            <Button variant='primary' className='button col' onClick={() => setMentions(mentions + 1)}>Mention crush</Button>
+            <div className="button">
+              <Heart animationScale="1.25" className="button" isActive={true} onClick={() => setMentions(mentions + 1)}/>
+            </div>
           </Col>
           <Col>
             <span>{props.name}</span>
