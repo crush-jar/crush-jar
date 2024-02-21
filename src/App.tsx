@@ -1,8 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
 import money from './images/money.png'
 import Profile from './components/Profile'
+import './App.css';
+import './scss/custom.scss';
 
 function App() {
   return (
