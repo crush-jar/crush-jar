@@ -24,7 +24,7 @@ function Profile(props: ProfileProps) {
             <span>{props.name}</span>
           </Col>
           <Col>
-            <span className='number-of-mentions col'> {mentions} </span>
+            <span className='number-of-mentions col'> {`\$${mentions}.00`} </span>
           </Col>
         </Row>
       </Container>
