@@ -1,9 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import money from './images/money.png'
-import Profile from './components/Profile'
+import Profile from './components/profile/Profile'
+import Jar from './components/jar/Jar'
 import './App.css';
 import './scss/custom.scss';
+import MongoDataComponent from './components/mongodb/MongoDataComponent'
 
 function App() {
   return (
@@ -12,6 +14,7 @@ function App() {
       <Profile name='Anna'/>
       <Profile name='Daphne'/>
       <Profile name='Emmy'/>
+      <MongoDataComponent/>
     </div>
   );
 }
