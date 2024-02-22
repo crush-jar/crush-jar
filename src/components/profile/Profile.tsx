@@ -8,20 +8,7 @@ type ProfileProps = {
 }
 
 function Profile(props: ProfileProps) {
-  const [data, setData] = useState("");
-  const getData = async () => {
-    const resp = await fetch('https://api.sampleapis.com/coffee/hot');
-    const json = await resp.json();
-    console.log(json)
-    setData(json);
-  }
-
-  useEffect(() => {
-    getData();
-  }, []);
-
   const [mentions, setMentions] = useState(0)
-  console.log(data)
 
   return (
     <div className="profile mt-5 text-center">
@@ -35,11 +22,6 @@ function Profile(props: ProfileProps) {
           </Col>
           <Col>
             <span className='number-of-mentions col'> {`$${mentions}.00`} </span>
-          </Col>
-          <Col>
-            <div>
-              {JSON.stringify(data, null, 2)}
-            </div>
           </Col>
         </Row>
       </Container>
