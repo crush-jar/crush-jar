@@ -38,7 +38,7 @@ function Profile(props: ProfileProps) {
         <Container>
           <Row>
             <Col>
-              <Heart animationScale="1.5" activeColor="#DDBE80" className="button" isActive={true} onClick={handleButtonPress}/>
+              <Heart animationScale="1.5" activeColor="#FF3D41" className="button" isActive={true} onClick={handleButtonPress}/>
             </Col>
             <Col>
               <span>{props.name}</span>
