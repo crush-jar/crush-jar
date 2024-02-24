@@ -14,7 +14,7 @@ function Profile(props: ProfileProps) {
   const [mentions, setMentions] = useState(0)
 
   const getMentions = async () => {
-    const response = await fetch(`https://rich-red-giraffe-cap.cyclic.app/mentions?name=${props.name}`)
+    const response = await fetch(`https://joyous-red-crane.cyclic.app/mentions?name=${props.name}`)
     const initialMentions = await response.json()
     setMentions(initialMentions[0].numMentions)
     setLoading(false)
@@ -25,7 +25,7 @@ function Profile(props: ProfileProps) {
   }, [])
 
   const addMention = useMutation({
-    mutationFn: (newComment) => axios.put(`https://rich-red-giraffe-cap.cyclic.app/mentions?name=${props.name}&numMentions=${mentions + 1}`),
+    mutationFn: (newComment) => axios.put(`https://joyous-red-crane.cyclic.app/mentions?name=${props.name}&numMentions=${mentions + 1}`),
   })
 
   const handleButtonPress = () => {
