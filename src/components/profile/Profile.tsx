@@ -1,5 +1,5 @@
 import './Profile.css';
-import { useState, useMemo, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { Col, Container, Row } from "react-bootstrap";
 import Heart from 'react-heart';
