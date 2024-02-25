@@ -16,6 +16,7 @@ type Profile = {
 function App() {
   const queryClient = new QueryClient()
   const [mentions, setMentions] = useState<Profile[]>([])
+  const [totalMentions, setTotalMentions] = useState(0)
 
   async function callPostApi(url = "", data = {}) {
     const response = await fetch(url, {
@@ -31,7 +32,9 @@ function App() {
     const response = await fetch(`${process.env.REACT_APP_MONGO_ENDPOINT_URL}`,
       {headers: new Headers({'Authorization': `Bearer ${await callPostApi(process.env.REACT_APP_MONGO_URL, {key: process.env.REACT_APP_MONGO_KEY})}`})})
     const initialMentions = await response.json()
+    const totalInitialMentions: number = initialMentions.reduce((sum: number, mention: Profile) => sum + mention.numMentions, 0);
     setMentions(initialMentions)
+    setTotalMentions(totalInitialMentions)
   }, [])
 
   const loading = useMemo(() => {
@@ -44,21 +47,16 @@ function App() {
     return mentions?.filter((profile) => profile.name === name)[0]?.numMentions
   }
 
-  const totalNumMentions: number = mentions.reduce((sum, mention) => sum + mention.numMentions, 0);
-
   if (loading) return (<div className="App App-header">Loading...</div>)
-
-  
-  console.log(mentions)
 
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App">
-        <Profile mentions={filterMentionByName('Christina')} name='Christina'/>
-        <Profile mentions={filterMentionByName('Daphne')} name='Daphne'/>
-        <Profile mentions={filterMentionByName('Anna')} name='Anna'/>
-        <Profile mentions={filterMentionByName('Emmy')} name='Emmy'/>
-        <Jar totalAmount={totalNumMentions}/>
+        <Profile updateTotalMentions={() => setTotalMentions(totalMentions + 1)} mentions={filterMentionByName('Christina')} name='Christina'/>
+        <Profile updateTotalMentions={() => setTotalMentions(totalMentions + 1)} mentions={filterMentionByName('Daphne')} name='Daphne'/>
+        <Profile updateTotalMentions={() => setTotalMentions(totalMentions + 1)} mentions={filterMentionByName('Anna')} name='Anna'/>
+        <Profile updateTotalMentions={() => setTotalMentions(totalMentions + 1)} mentions={filterMentionByName('Emmy')} name='Emmy'/>
+        <Jar totalAmount={totalMentions}/>
       </div>
     </QueryClientProvider>
   );

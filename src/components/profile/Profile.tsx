@@ -7,6 +7,7 @@ import Heart from 'react-heart';
 type ProfileProps = {
   name: string;
   mentions: number;
+  updateTotalMentions: Function;
 }
 
 function Profile(props: ProfileProps) {
@@ -35,6 +36,7 @@ function Profile(props: ProfileProps) {
   const handleButtonPress = () => {
     addMention()
     setMentions(mentions + 1)
+    props.updateTotalMentions()
   }
 
   return (
