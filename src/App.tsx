@@ -54,10 +54,10 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App">
-        <Profile updateTotalMentions={() => setTotalMentions(totalMentions + 1)} mentions={filterMentionByName('Christina')} name='Christina'/>
-        <Profile updateTotalMentions={() => setTotalMentions(totalMentions + 1)} mentions={filterMentionByName('Daphne')} name='Daphne'/>
-        <Profile updateTotalMentions={() => setTotalMentions(totalMentions + 1)} mentions={filterMentionByName('Anna')} name='Anna'/>
-        <Profile updateTotalMentions={() => setTotalMentions(totalMentions + 1)} mentions={filterMentionByName('Emmy')} name='Emmy'/>
+        <Profile updateTotalMentions={(e: number) => setTotalMentions(totalMentions + e)} mentions={filterMentionByName('Christina')} name='Christina'/>
+        <Profile updateTotalMentions={(e: number) => setTotalMentions(totalMentions + e)} mentions={filterMentionByName('Daphne')} name='Daphne'/>
+        <Profile updateTotalMentions={(e: number) => setTotalMentions(totalMentions + e)} mentions={filterMentionByName('Anna')} name='Anna'/>
+        <Profile updateTotalMentions={(e: number) => setTotalMentions(totalMentions + e)} mentions={filterMentionByName('Emmy')} name='Emmy'/>
         <Jar jar={money} totalAmount={totalMentions}/>
       </div>
     </QueryClientProvider>

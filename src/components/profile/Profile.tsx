@@ -2,7 +2,10 @@ import './Profile.css';
 import { useState } from 'react';
 import axios from 'axios';
 import { Col, Container, Row } from "react-bootstrap";
-import { AiOutlineUndo, AiFillSetting } from "react-icons/ai";
+import { IconButton } from '@mui/material';
+import UndoIcon from '@mui/icons-material/Undo';
+import { createTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import Heart from 'react-heart';
 
 type ProfileProps = {
@@ -34,11 +37,15 @@ function Profile(props: ProfileProps) {
     })
   }
 
-  const handleButtonPress = () => {
+  const handleButtonPress = (e: number) => {
     addMention()
-    setMentions(mentions + 1)
-    props.updateTotalMentions()
+    setMentions(mentions + e)
+    props.updateTotalMentions(e)
   }
+
+  const theme = createTheme({
+    palette: {primary:{main:'#bdfffe'}}
+  });
 
   return (
     <div className="profile mt-3 mb-4 text-center">
@@ -46,8 +53,13 @@ function Profile(props: ProfileProps) {
           <Row>
             <Col>
               <div>
-                <Heart animationScale="1.5" activeColor="#FF3D41" className="button" isActive={true} onClick={handleButtonPress}/>
-                <span style={{opacity: 0.5}}> < AiOutlineUndo/></span>
+                <Heart animationScale="1.5" activeColor="#FF3D41" className="button" isActive={true} onClick={() => handleButtonPress(1)}/>
+                <span> </span>
+                <ThemeProvider theme={theme}>
+                  <IconButton color="primary" onClick={() => handleButtonPress(-1)}>
+                    <UndoIcon fontSize="large"/>
+                  </IconButton>
+                </ThemeProvider>
               </div>
             </Col>
             <Col>

@@ -11,6 +11,7 @@
 .button {
   height: 5vh;
   align-self: center;
+  color: #EEE2E4;
 }
 
 .number-of-mentions {
