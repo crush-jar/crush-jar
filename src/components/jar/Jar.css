@@ -1,9 +1,20 @@
 .head-text {
    position: relative;
 }
+
+.head-image {
+  margin-top: 2vh;
+  max-height: 25vh;
+  width: 25vh;
+}
+
 .text-on-image {
   position: absolute;
-  right: 50%;
+  top: 75%;
   left: 50%;
-  bottom: 15%;
+  transform: translate(-50%, -50%);
+  font-family: Apple Chancery, cursive;
+  color: green;
+  font-weight: 1000;
+  font-size: 4.5vh;
 }

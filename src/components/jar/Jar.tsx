@@ -1,15 +1,17 @@
 import money from './images/money.png'
 import './Jar.css'
 
-function Jar() {
+type JarProps = {
+  totalAmount: number;
+}
+
+function Jar(props: JarProps) {
   return (
     <header>
       <div>
         <div className='head-text'>
-          <div className='head-image'>
-            <img src={money}/>
-          </div>
-          <p className='text-on-image'>test</p>
+          <img className='head-image' src={money}/>
+          <p className='text-on-image'>{`$${props.totalAmount}.00`}</p>
           </div>
       </div>
     </header>
