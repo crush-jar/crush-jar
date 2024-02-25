@@ -47,7 +47,6 @@ function Profile(props: ProfileProps) {
             <Col>
               <div>
                 <Heart animationScale="1.5" activeColor="#FF3D41" className="button" isActive={true} onClick={handleButtonPress}/>
-                <span style={{color: "#FF3D41"}}> < AiFillSetting/></span>
                 <span style={{opacity: 0.5}}> < AiOutlineUndo/></span>
               </div>
             </Col>
