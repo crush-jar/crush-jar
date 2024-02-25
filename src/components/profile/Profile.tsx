@@ -28,17 +28,17 @@ function Profile(props: ProfileProps) {
     return response.json().then(res => res.access_token); 
   }
 
-  const addMention = async () => {
+  const incrementNumMentions = async (e: number) => {
     axios({
       method: 'put',
-      url: `${process.env.REACT_APP_MONGO_ENDPOINT_URL}?name=${props.name}&numMentions=${mentions + 1}`,
+      url: `${process.env.REACT_APP_MONGO_ENDPOINT_URL}?name=${props.name}&numMentions=${mentions + e}`,
       headers: {Authorization: `Bearer ${await callPostApi(getBearerTokenEndpoint, {key: process.env.REACT_APP_MONGO_KEY})}`},
       data: {}
     })
   }
 
   const handleButtonPress = (e: number) => {
-    addMention()
+    incrementNumMentions(e)
     setMentions(mentions + e)
     props.updateTotalMentions(e)
   }
