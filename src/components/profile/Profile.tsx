@@ -4,8 +4,7 @@ import axios from 'axios';
 import { Col, Container, Row } from "react-bootstrap";
 import { IconButton } from '@mui/material';
 import UndoIcon from '@mui/icons-material/Undo';
-import { createTheme } from '@mui/material/styles';
-import { ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Heart from 'react-heart';
 
 type ProfileProps = {
@@ -44,29 +43,29 @@ function Profile(props: ProfileProps) {
   }
 
   const theme = createTheme({
-    palette: {primary:{main:'#bdfffe'}}
+    palette: {primary:{main:'#bdfffe'}},
   });
 
   return (
-    <div className="profile mt-3 mb-4 text-center">
+    <div className="profile">
         <Container>
           <Row>
-            <Col>
+            <Col style={{alignSelf: 'center'}}>
               <div>
                 <Heart animationScale="1.5" activeColor="#FF3D41" className="button" isActive={true} onClick={() => handleButtonPress(1)}/>
                 <span> </span>
                 <ThemeProvider theme={theme}>
                   <IconButton color="primary" disabled={mentions === 0} onClick={() => handleButtonPress(-1)}>
-                    <UndoIcon fontSize="large"/>
+                    <UndoIcon sx={{fontSize: '5vw'}} />
                   </IconButton>
                 </ThemeProvider>
               </div>
             </Col>
-            <Col>
-              <span>{props.name}</span>
+            <Col style={{alignSelf: 'center'}}>
+              <div>{props.name}</div>
             </Col>
-            <Col>
-              <span className='number-of-mentions col'> {`$${mentions}`} </span>
+            <Col style={{alignSelf: 'center'}}>
+              <span > {`$${mentions}`} </span>
             </Col>
           </Row>
         </Container>

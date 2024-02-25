@@ -2,18 +2,40 @@
    position: relative;
 }
 
-.head-image {
-  max-height: 25vh;
-  width: 25vh;
+@media only screen 
+and (max-device-width : 1000px) {
+  .head-image {
+    max-height: 70vw;
+    width: 70vw;
+  }
+
+  .text-on-image {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Apple Chancery, cursive;
+    color: green;
+    font-weight: 1000;
+    font-size: 15vw;
+  }
 }
 
-.text-on-image {
-  position: absolute;
-  top: 75%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: Apple Chancery, cursive;
-  color: green;
-  font-weight: 1000;
-  font-size: 3vh;
+@media only screen 
+and (min-device-width : 1000px) {
+  .head-image {
+    max-height: 15vw;
+    width: 15vw;
+  }
+
+  .text-on-image {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Apple Chancery, cursive;
+    color: green;
+    font-weight: 1000;
+    font-size: 3vw;
+  }
 }
