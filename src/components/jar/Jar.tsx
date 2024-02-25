@@ -11,7 +11,7 @@ function Jar(props: JarProps) {
       <div>
         <div className='head-text'>
           <img className='head-image' alt="loading" src={props.jar}/>
-          <p className='text-on-image'>{`$${props.totalAmount}.00`}</p>
+          <p className='text-on-image'>{`$${props.totalAmount}`}</p>
           </div>
       </div>
     </header>
