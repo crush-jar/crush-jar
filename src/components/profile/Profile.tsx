@@ -2,6 +2,7 @@ import './Profile.css';
 import { useState } from 'react';
 import axios from 'axios';
 import { Col, Container, Row } from "react-bootstrap";
+import { AiOutlineUndo, AiFillSetting } from "react-icons/ai";
 import Heart from 'react-heart';
 
 type ProfileProps = {
@@ -44,7 +45,11 @@ function Profile(props: ProfileProps) {
         <Container>
           <Row>
             <Col>
-              <Heart animationScale="1.5" activeColor="#FF3D41" className="button" isActive={true} onClick={handleButtonPress}/>
+              <div>
+                <Heart animationScale="1.5" activeColor="#FF3D41" className="button" isActive={true} onClick={handleButtonPress}/>
+                <span style={{color: "#FF3D41"}}> < AiFillSetting/></span>
+                <span style={{opacity: 0.5}}> < AiOutlineUndo/></span>
+              </div>
             </Col>
             <Col>
               <span>{props.name}</span>
