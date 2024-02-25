@@ -6,51 +6,31 @@ import Heart from 'react-heart';
 
 type ProfileProps = {
   name: string;
+  mentions: number;
 }
 
 function Profile(props: ProfileProps) {
-  const [loading, setLoading] = useState(true)
-  const [mentions, setMentions] = useState(0)
+  const [mentions, setMentions] = useState(props.mentions)
+  const getBearerTokenEndpoint = process.env.REACT_APP_MONGO_URL
 
-  const url = process.env.REACT_APP_MONGO_URL
-
-  async function postData(url = "", data = {}) {
-    // Default options are marked with *
+  async function callPostApi(url = "", data = {}) {
     const response = await fetch(url, {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
-      mode: "cors", // no-cors, *cors, same-origin
-      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: "same-origin", // include, *same-origin, omit
-      headers: {
-        "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      redirect: "follow", // manual, *follow, error
-      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: JSON.stringify(data), // body data type must match "Content-Type" header
+      method: "POST", 
+      mode: "cors", 
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(data),
     });
-    return response.json().then(res => res.access_token); // parses JSON response into native JavaScript objects
-  }
-  const getMentions = async () => {
-    const response = await fetch(`${process.env.REACT_APP_MONGO_ENDPOINT_URL}?name=${props.name}`,
-      {headers: new Headers({'Authorization': `Bearer ${await postData(url, {key: process.env.REACT_APP_MONGO_KEY})}`})})
-    const initialMentions = await response.json()
-    setMentions(initialMentions.numMentions)
-    setLoading(false)
+    return response.json().then(res => res.access_token); 
   }
 
   const addMention = async () => {
     axios({
       method: 'put',
       url: `${process.env.REACT_APP_MONGO_ENDPOINT_URL}?name=${props.name}&numMentions=${mentions + 1}`,
-      headers: {Authorization: `Bearer ${await postData(url, {key: process.env.REACT_APP_MONGO_KEY})}`},
+      headers: {Authorization: `Bearer ${await callPostApi(getBearerTokenEndpoint, {key: process.env.REACT_APP_MONGO_KEY})}`},
       data: {}
     })
   }
-
-  useEffect(() => {
-    getMentions()
-  }, [])
 
   const handleButtonPress = () => {
     addMention()
@@ -68,7 +48,7 @@ function Profile(props: ProfileProps) {
               <span>{props.name}</span>
             </Col>
             <Col>
-              <span className='number-of-mentions col'> {loading ? 'loading...' : `$${mentions}.00`} </span>
+              <span className='number-of-mentions col'> {`$${mentions}.00`} </span>
             </Col>
           </Row>
         </Container>
