@@ -40,7 +40,7 @@ function Profile(props: ProfileProps) {
   }
 
   return (
-    <div className="profile mt-5 text-center">
+    <div className="profile mt-3 mb-4 text-center">
         <Container>
           <Row>
             <Col>
