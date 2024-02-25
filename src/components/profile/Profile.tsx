@@ -56,7 +56,7 @@ function Profile(props: ProfileProps) {
                 <Heart animationScale="1.5" activeColor="#FF3D41" className="button" isActive={true} onClick={() => handleButtonPress(1)}/>
                 <span> </span>
                 <ThemeProvider theme={theme}>
-                  <IconButton color="primary" onClick={() => handleButtonPress(-1)}>
+                  <IconButton color="primary" disabled={mentions === 0} onClick={() => handleButtonPress(-1)}>
                     <UndoIcon fontSize="large"/>
                   </IconButton>
                 </ThemeProvider>
