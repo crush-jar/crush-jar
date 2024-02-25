@@ -16,11 +16,13 @@
 .App-header {
   min-height: 100vh;
   display: flex;
+  font-weight: bold;
+  font-family: Apple Chancery, cursive;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(20px + 2vmin);
-  color: white;
+  color: #EEE2E4;
 }
 
 .App-link {

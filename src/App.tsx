@@ -2,12 +2,11 @@ import React from 'react';
 import Profile from './components/profile/Profile'
 import './App.css';
 import './scss/custom.scss';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 function App() {
   const queryClient = new QueryClient()
-  const bearerTokenEndpoint = process.env.REACT_APP_MONGO_URL
   const [mentions, setMentions] = useState<any[]>([])
 
   async function callPostApi(url = "", data = {}) {
@@ -20,17 +19,17 @@ function App() {
     return response.json().then(res => res.access_token); 
   }
 
-  const getMentions = async () => {
+  const getMentions = useCallback(async () => {
     const response = await fetch(`${process.env.REACT_APP_MONGO_ENDPOINT_URL}`,
-      {headers: new Headers({'Authorization': `Bearer ${await callPostApi(bearerTokenEndpoint, {key: process.env.REACT_APP_MONGO_KEY})}`})})
+      {headers: new Headers({'Authorization': `Bearer ${await callPostApi(process.env.REACT_APP_MONGO_URL, {key: process.env.REACT_APP_MONGO_KEY})}`})})
     const initialMentions = await response.json()
     setMentions(initialMentions)
-  }
+  }, [])
 
   const loading = useMemo(() => {
     getMentions()
     return mentions.length !== 0 ? false : true
-  }, [mentions.length])
+  }, [mentions.length, getMentions])
 
   const filterMentionByName = (name: string) => {
     console.log(mentions?.filter((profile) => profile.name === name))
