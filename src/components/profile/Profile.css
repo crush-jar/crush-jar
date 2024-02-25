@@ -9,6 +9,13 @@ and (min-device-width : 1000px) {
     margin-top: 1vh;
     font-size: 5vw;
   }
+
+  .button {
+    height: 5vw;
+    text-align: center;
+    align-self: center;
+    color: #EEE2E4;
+  }
 }
 
 @media only screen 
@@ -23,13 +30,13 @@ and (max-device-width : 1000px) {
     margin-bottom: 8vh;
     font-size: 5vw;
   }
-}
 
-.button {
-  height: 5vw;
-  text-align: center;
-  align-self: center;
-  color: #EEE2E4;
+  .button {
+    height: 10vw;
+    text-align: center;
+    align-self: center;
+    color: #EEE2E4;
+  }
 }
 
 .number-of-mentions {

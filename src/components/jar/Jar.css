@@ -2,14 +2,7 @@
    position: relative;
 }
 
-@media only screen 
-and (max-device-width : 1000px) {
-  .head-image {
-    max-height: 70vw;
-    width: 70vw;
-  }
-
-  .text-on-image {
+.text-on-image {
     position: absolute;
     top: 75%;
     left: 50%;
@@ -17,25 +10,37 @@ and (max-device-width : 1000px) {
     font-family: Apple Chancery, cursive;
     color: green;
     font-weight: 1000;
+}
+
+/* Most smart phones */
+@media only screen and (max-device-width : 700px) and (min-device-width : 300px) {
+  .head-image {
+    max-height: 50vw;
+  }
+
+  .text-on-image {
     font-size: 15vw;
   }
 }
 
-@media only screen 
-and (min-device-width : 1000px) {
+/* Laptop/desktops */
+@media only screen and (min-device-width : 700px) {
   .head-image {
     max-height: 15vw;
-    width: 15vw;
   }
 
   .text-on-image {
-    position: absolute;
-    top: 75%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: Apple Chancery, cursive;
-    color: green;
-    font-weight: 1000;
+    font-size: 3vw;
+  }
+}
+
+/* Nokia */
+@media only screen and (max-device-width : 300px) {
+  .head-image {
+    max-height: 30vw;
+  }
+
+  .text-on-image {
     font-size: 3vw;
   }
 }
