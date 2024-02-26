@@ -8,8 +8,8 @@ import money from '../../components/jar/images/money.png'
 import { useState, useMemo, useCallback } from 'react';
 import { Link } from "react-router-dom";
 import { IconButton } from '@mui/material';
-import UndoIcon from '@mui/icons-material/Undo';
-import HistoryIcon from '@mui/icons-material/History';
+import { Col, Container, Row } from "react-bootstrap";
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 type Timestamp = {
   _id: String,
@@ -23,7 +23,7 @@ function Audit() {
 
   const getAudit = useCallback(async () => {
     const header = new Headers({'Authorization': `Bearer ${await callPostApi(process.env.REACT_APP_MONGO_URL, {key: process.env.REACT_APP_MONGO_KEY})}`})
-    const auditCall = await fetch(`https://us-east-2.aws.data.mongodb-api.com/app/data-ocdpl/endpoint/audit`,{headers: header})
+    const auditCall = await fetch(`${process.env.REACT_APP_MONGO_ENDPOINT_URL}/audit`,{headers: header})
     const initialAuditLog = await auditCall.json()
     const sortedAuditLog = initialAuditLog.reverse()
     console.log(sortedAuditLog)
@@ -49,9 +49,11 @@ function Audit() {
         History
       </div>
       {audit.map((auditTimestamp) => (<div className="audit-body">{auditTimestamp.Description}</div>))}
-      <Link to={"/"}>
-        <HistoryIcon sx={{fontSize: '5vw'}} />
-      </Link>
+      <div className ="home-button">
+        <Link to={"/"}>
+          <AttachMoneyIcon className="home-button" sx={{fontSize: '5vw'}} />
+        </Link>
+      </div>
     </div>
   );
 }

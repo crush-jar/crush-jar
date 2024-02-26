@@ -3,6 +3,7 @@ import Profile from '../../components/profile/Profile'
 import Jar from '../../components/jar/Jar'
 import '../App.css';
 import '../scss/custom.scss';
+import './home.css';
 import money from '../../components/jar/images/money.png'
 import { useState, useMemo, useCallback } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -10,6 +11,7 @@ import { Link } from "react-router-dom";
 import { IconButton } from '@mui/material';
 import UndoIcon from '@mui/icons-material/Undo';
 import HistoryIcon from '@mui/icons-material/History';
+import { Col, Container, Row } from "react-bootstrap";
 
 function Home() {
   const queryClient = new QueryClient()
@@ -29,7 +31,7 @@ function Home() {
 
   const getMentions = useCallback(async () => {
     const header = new Headers({'Authorization': `Bearer ${await callPostApi(process.env.REACT_APP_MONGO_URL, {key: process.env.REACT_APP_MONGO_KEY})}`})
-    const profileCall = await fetch(`${process.env.REACT_APP_MONGO_ENDPOINT_URL}`,{headers: header})
+    const profileCall = await fetch(`${process.env.REACT_APP_MONGO_ENDPOINT_URL}/mentions`,{headers: header})
 
     const initialMentions = await profileCall.json()
     const totalInitialMentions: number = initialMentions.reduce((sum: number, mention: any) => sum + mention.numMentions, 0);
@@ -62,10 +64,20 @@ function Home() {
       <Profile updateTotalMentions={(e: number) => setTotalMentions(totalMentions + e)} mentions={filterMentionByName('Daphne')} name='Daphne'/>
       <Profile updateTotalMentions={(e: number) => setTotalMentions(totalMentions + e)} mentions={filterMentionByName('Anna')} name='Anna'/>
       <Profile updateTotalMentions={(e: number) => setTotalMentions(totalMentions + e)} mentions={filterMentionByName('Emmy')} name='Emmy'/>
-      <Jar jar={money} totalAmount={totalMentions}/>
-      <Link to={"audit"}>
-        <HistoryIcon sx={{fontSize: '5vw'}} />
-      </Link>
+      <Container>
+        <Row>
+          <Col>
+          </Col>
+          <Col>
+            <Jar jar={money} totalAmount={totalMentions}/>
+          </Col>
+          <Col className="history-button-container">
+            <Link to={"audit"}>
+              <HistoryIcon sx={{fontSize: '5vw'}} className="history-button"/>
+            </Link>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }

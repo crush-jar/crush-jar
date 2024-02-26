@@ -65,7 +65,7 @@ function Profile(props: ProfileProps) {
               <div>{props.name}</div>
             </Col>
             <Col style={{alignSelf: 'center'}}>
-              <span > {`$${mentions}`} </span>
+              <span className=''> {`$${mentions}`} </span>
             </Col>
           </Row>
         </Container>

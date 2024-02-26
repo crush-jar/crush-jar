@@ -19,11 +19,13 @@
   align-self: center;
 }
 
-.home-button {
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  text-align: center;
-  margin-bottom: 1vh;
+.history-button-container {
+  position: relative
+}
+
+.history-button {
+  position: absolute;
+  transform: translate(-50%);
+  bottom: 0;
   color: #DCBE97;
 }
