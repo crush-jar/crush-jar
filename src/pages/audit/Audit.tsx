@@ -11,6 +11,13 @@ import { IconButton } from '@mui/material';
 import UndoIcon from '@mui/icons-material/Undo';
 import HistoryIcon from '@mui/icons-material/History';
 
+type Timestamp = {
+  _id: String,
+  Description: String,
+  LogId: String,
+  timestamp: bigint;
+}
+
 function Audit() {
   const [audit, setAudit] = useState<any[]>([])
 
@@ -18,7 +25,8 @@ function Audit() {
     const header = new Headers({'Authorization': `Bearer ${await callPostApi(process.env.REACT_APP_MONGO_URL, {key: process.env.REACT_APP_MONGO_KEY})}`})
     const auditCall = await fetch(`https://us-east-2.aws.data.mongodb-api.com/app/data-ocdpl/endpoint/audit`,{headers: header})
     const initialAuditLog = await auditCall.json()
-    const sortedAuditLog = initialAuditLog.sort((a: any, b: any) => {return a.timestamp > b.timestamp? -1 : 1})
+    const sortedAuditLog = initialAuditLog.sort((a: Timestamp, b: Timestamp) => {return a.timestamp > b.timestamp ? 1 : -1}).reverse()
+    console.log(sortedAuditLog)
     setAudit(sortedAuditLog)
   }, [])
 

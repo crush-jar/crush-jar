@@ -14,7 +14,6 @@ import HistoryIcon from '@mui/icons-material/History';
 function Home() {
   const queryClient = new QueryClient()
   const [mentions, setMentions] = useState<any[]>([])
-  const [audit, setAudit] = useState<any[]>([])
   const [totalMentions, setTotalMentions] = useState(0)
   const [jarLoaded, setJarLoaded] = useState(false)
 
@@ -31,15 +30,11 @@ function Home() {
   const getMentions = useCallback(async () => {
     const header = new Headers({'Authorization': `Bearer ${await callPostApi(process.env.REACT_APP_MONGO_URL, {key: process.env.REACT_APP_MONGO_KEY})}`})
     const profileCall = await fetch(`${process.env.REACT_APP_MONGO_ENDPOINT_URL}`,{headers: header})
-    const auditCall = await fetch(`https://us-east-2.aws.data.mongodb-api.com/app/data-ocdpl/endpoint/audit`,{headers: header})
 
     const initialMentions = await profileCall.json()
-    const initialAuditLog = await auditCall.json()
     const totalInitialMentions: number = initialMentions.reduce((sum: number, mention: any) => sum + mention.numMentions, 0);
-    setAudit(initialAuditLog.sort((a: any, b: any) => {return a.timestamp > b.timestamp? -1 : 1}))
     setMentions(initialMentions)
     setTotalMentions(totalInitialMentions)
-    console.log(audit)
   }, [])
 
   const loading = useMemo(() => {
