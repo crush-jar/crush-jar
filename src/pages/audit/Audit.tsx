@@ -51,7 +51,7 @@ function Audit() {
       {audit.map((auditTimestamp) => (<div className="audit-body">{auditTimestamp.Description}</div>))}
       <div className ="home-button">
         <Link to={"/"}>
-          <AttachMoneyIcon className="home-button" sx={{fontSize: '5vw'}} />
+          <AttachMoneyIcon className="home-button" sx={{fontSize: '8vh'}} />
         </Link>
       </div>
     </div>

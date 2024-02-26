@@ -73,7 +73,7 @@ function Home() {
           </Col>
           <Col className="history-button-container">
             <Link to={"audit"}>
-              <HistoryIcon sx={{fontSize: '5vw'}} className="history-button"/>
+              <HistoryIcon sx={{fontSize: '8vh'}} className="history-button"/>
             </Link>
           </Col>
         </Row>
