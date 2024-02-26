@@ -6,15 +6,11 @@ import '../scss/custom.scss';
 import './home.css';
 import money from '../../components/jar/images/money.png'
 import { useState, useMemo, useCallback } from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
 import { Link } from "react-router-dom";
-import { IconButton } from '@mui/material';
-import UndoIcon from '@mui/icons-material/Undo';
 import HistoryIcon from '@mui/icons-material/History';
 import { Col, Container, Row } from "react-bootstrap";
 
 function Home() {
-  const queryClient = new QueryClient()
   const [mentions, setMentions] = useState<any[]>([])
   const [totalMentions, setTotalMentions] = useState(0)
   const [jarLoaded, setJarLoaded] = useState(false)

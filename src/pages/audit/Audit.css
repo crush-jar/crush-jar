@@ -3,28 +3,54 @@
   font-weight: 1000;
 }
 
-.audit-body {
-  margin: 5vh;
-  font-family: serif;
-  font-size: 5vh;
-  color: #EEE2E4;
-  text-align: center;
-  align-self: center;
+.home-button {
+  margin-top: 2vh;
 }
 
-.audit-header {
-  margin: 5vh;
-  font-size: 12vh;
-  color: #EEE2E4;
-  text-align: center;
-  align-self: center;
+/* computers */
+@media only screen and (min-device-width : 1000px) {
+  .audit-body {
+    margin-bottom: 5vh;
+    font-family: serif;
+    font-size: 5vh;
+    color: #eee2e4;
+    text-align: center;
+    align-self: center;
+  }
+
+  .audit-header {
+    font-size: 12vh;
+    color: #EEE2E4;
+    text-align: center;
+    align-self: center;
+  }
 }
+
+/* phones */
+@media only screen and (max-device-width : 1000px) {
+  .audit-body {
+    margin-bottom: 5vh;
+    font-family: serif;
+    font-size: 8vw;
+    color: #eee2e4;
+    text-align: center;
+    align-self: center;
+  }
+
+  .audit-header {
+    font-size: 5vh;
+    color: #EEE2E4;
+    text-align: center;
+    align-self: center;
+  }
+}
+
 
 .home-button {
   display: flex;
   justify-content: center;
-  align-self: center;
   text-align: center;
+  align-self: center;
   margin-bottom: 1vh;
   color: #DCBE97;
 }

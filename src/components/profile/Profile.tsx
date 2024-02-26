@@ -5,6 +5,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { IconButton } from '@mui/material';
 import UndoIcon from '@mui/icons-material/Undo';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { callPostApi } from '../../pages/Functions'
 import Heart from 'react-heart';
 
 type ProfileProps = {
@@ -17,26 +18,38 @@ function Profile(props: ProfileProps) {
   const [mentions, setMentions] = useState(props.mentions)
   const getBearerTokenEndpoint = process.env.REACT_APP_MONGO_URL
 
-  async function callPostApi(url = "", data = {}) {
-    const response = await fetch(url, {
-      method: "POST", 
-      mode: "cors", 
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(data),
-    });
-    return response.json().then(res => res.access_token); 
-  }
-
   const incrementNumMentions = async (e: number) => {
     axios({
       method: 'put',
-      url: `${process.env.REACT_APP_MONGO_ENDPOINT_URL}?name=${props.name}&numMentions=${mentions + e}`,
+      url: `${process.env.REACT_APP_MONGO_ENDPOINT_URL}/mentions?name=${props.name}&numMentions=${mentions + e}`,
+      headers: {Authorization: `Bearer ${await callPostApi(getBearerTokenEndpoint, {key: process.env.REACT_APP_MONGO_KEY})}`},
+      data: {}
+    })
+  }
+
+  const addTimestamp = async () => {
+    axios({
+      method: 'post',
+      url: `${process.env.REACT_APP_MONGO_ENDPOINT_URL}/audit?name=${props.name}&numMentions=${mentions + 1}`,
+      headers: {Authorization: `Bearer ${await callPostApi(getBearerTokenEndpoint, {key: process.env.REACT_APP_MONGO_KEY})}`},
+      data: {}
+    })
+  }
+
+  const removeTimestamp = async () => {
+    axios({
+      method: 'delete',
+      url: `${process.env.REACT_APP_MONGO_ENDPOINT_URL}/audit?LogId=${props.name}${mentions}`,
       headers: {Authorization: `Bearer ${await callPostApi(getBearerTokenEndpoint, {key: process.env.REACT_APP_MONGO_KEY})}`},
       data: {}
     })
   }
 
   const handleButtonPress = (e: number) => {
+    if (e > 0)
+      addTimestamp()
+    else 
+      removeTimestamp()
     incrementNumMentions(e)
     setMentions(mentions + e)
     props.updateTotalMentions(e)
@@ -56,7 +69,7 @@ function Profile(props: ProfileProps) {
                 <span> </span>
                 <ThemeProvider theme={theme}>
                   <IconButton color="primary" disabled={mentions === 0} onClick={() => handleButtonPress(-1)}>
-                    <UndoIcon sx={{fontSize: '5vw'}} />
+                    <UndoIcon sx={{fontSize: '3vh'}} />
                   </IconButton>
                 </ThemeProvider>
               </div>

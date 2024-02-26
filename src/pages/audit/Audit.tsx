@@ -1,22 +1,12 @@
 import React from 'react';
-import Profile from '../../components/profile/Profile'
 import '../App.css';
 import './Audit.css';
 import '../scss/custom.scss';
 import { callPostApi } from '../Functions'
-import money from '../../components/jar/images/money.png'
 import { useState, useMemo, useCallback } from 'react';
 import { Link } from "react-router-dom";
-import { IconButton } from '@mui/material';
-import { Col, Container, Row } from "react-bootstrap";
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-
-type Timestamp = {
-  _id: String,
-  Description: String,
-  LogId: String,
-  timestamp: bigint;
-}
+import CottageIcon from '@mui/icons-material/Cottage';
 
 function Audit() {
   const [audit, setAudit] = useState<any[]>([])
@@ -45,15 +35,15 @@ function Audit() {
 
   return (
     <div className="audit">
+      <div className ="home-button">
+        <Link to={"/"}>
+          <CottageIcon className="home-button" sx={{fontSize: '8vh'}} />
+        </Link>
+      </div>
       <div className="audit-header">
         History
       </div>
       {audit.map((auditTimestamp) => (<div className="audit-body">{auditTimestamp.Description}</div>))}
-      <div className ="home-button">
-        <Link to={"/"}>
-          <AttachMoneyIcon className="home-button" sx={{fontSize: '8vh'}} />
-        </Link>
-      </div>
     </div>
   );
 }
