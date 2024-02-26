@@ -9,6 +9,7 @@ import { useState, useMemo, useCallback } from 'react';
 import { Link } from "react-router-dom";
 import HistoryIcon from '@mui/icons-material/History';
 import { Col, Container, Row } from "react-bootstrap";
+import { IconButton } from '@mui/material';
 
 function Home() {
   const [mentions, setMentions] = useState<any[]>([])
@@ -68,9 +69,9 @@ function Home() {
             <Jar jar={money} totalAmount={totalMentions}/>
           </Col>
           <Col className="history-button-container">
-            <Link to={"audit"}>
+            {totalMentions > 0 && <Link to={"audit"}>
               <HistoryIcon sx={{fontSize: '8vh'}} className="history-button"/>
-            </Link>
+            </Link>}
           </Col>
         </Row>
       </Container>
