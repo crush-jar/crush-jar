@@ -64,9 +64,6 @@ function Home() {
       <Profile updateTotalMentions={(e: number) => setTotalMentions(totalMentions + e)} mentions={filterMentionByName('Anna')} name='Anna'/>
       <Profile updateTotalMentions={(e: number) => setTotalMentions(totalMentions + e)} mentions={filterMentionByName('Emmy')} name='Emmy'/>
       <Jar jar={money} totalAmount={totalMentions}/>
-      <div>
-        {audit[0].Description}
-      </div>
     </div>
   );
 }
