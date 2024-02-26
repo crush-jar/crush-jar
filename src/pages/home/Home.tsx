@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { Link } from "react-router-dom";
 import { IconButton } from '@mui/material';
 import UndoIcon from '@mui/icons-material/Undo';
+import HistoryIcon from '@mui/icons-material/History';
 
 function Home() {
   const queryClient = new QueryClient()
@@ -68,7 +69,7 @@ function Home() {
       <Profile updateTotalMentions={(e: number) => setTotalMentions(totalMentions + e)} mentions={filterMentionByName('Emmy')} name='Emmy'/>
       <Jar jar={money} totalAmount={totalMentions}/>
       <Link to={"audit"}>
-        <UndoIcon sx={{fontSize: '5vw'}} />
+        <HistoryIcon sx={{fontSize: '5vw'}} />
       </Link>
     </div>
   );
