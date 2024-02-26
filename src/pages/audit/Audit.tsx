@@ -6,10 +6,15 @@ import '../scss/custom.scss';
 import { callPostApi } from '../Functions'
 import money from '../../components/jar/images/money.png'
 import { useState, useMemo, useCallback } from 'react';
+import { Link } from "react-router-dom";
+import { IconButton } from '@mui/material';
+import UndoIcon from '@mui/icons-material/Undo';
+import HistoryIcon from '@mui/icons-material/History';
 
 function Audit() {
   const [audit, setAudit] = useState<any[]>([])
   const [jarLoaded, setJarLoaded] = useState(false)
+
 
   const getAudit = useCallback(async () => {
     const header = new Headers({'Authorization': `Bearer ${await callPostApi(process.env.REACT_APP_MONGO_URL, {key: process.env.REACT_APP_MONGO_KEY})}`})
@@ -37,6 +42,9 @@ function Audit() {
         History
       </div>
       {audit.map((auditTimestamp) => (<div className="audit-body">{auditTimestamp.Description}</div>))}
+      <Link to={"/"}>
+        <HistoryIcon sx={{fontSize: '5vw'}} />
+      </Link>
     </div>
   );
 }
