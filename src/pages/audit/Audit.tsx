@@ -25,7 +25,7 @@ function Audit() {
     const header = new Headers({'Authorization': `Bearer ${await callPostApi(process.env.REACT_APP_MONGO_URL, {key: process.env.REACT_APP_MONGO_KEY})}`})
     const auditCall = await fetch(`https://us-east-2.aws.data.mongodb-api.com/app/data-ocdpl/endpoint/audit`,{headers: header})
     const initialAuditLog = await auditCall.json()
-    const sortedAuditLog = initialAuditLog.sort((a: Timestamp, b: Timestamp) => {return a.timestamp > b.timestamp ? 1 : -1}).reverse()
+    const sortedAuditLog = initialAuditLog.reverse()
     console.log(sortedAuditLog)
     setAudit(sortedAuditLog)
   }, [])
