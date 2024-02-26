@@ -6,6 +6,9 @@ import '../scss/custom.scss';
 import money from '../../components/jar/images/money.png'
 import { useState, useMemo, useCallback } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { Link } from "react-router-dom";
+import { IconButton } from '@mui/material';
+import UndoIcon from '@mui/icons-material/Undo';
 
 function Home() {
   const queryClient = new QueryClient()
@@ -64,6 +67,9 @@ function Home() {
       <Profile updateTotalMentions={(e: number) => setTotalMentions(totalMentions + e)} mentions={filterMentionByName('Anna')} name='Anna'/>
       <Profile updateTotalMentions={(e: number) => setTotalMentions(totalMentions + e)} mentions={filterMentionByName('Emmy')} name='Emmy'/>
       <Jar jar={money} totalAmount={totalMentions}/>
+      <Link to={"audit"}>
+        <UndoIcon sx={{fontSize: '5vw'}} />
+      </Link>
     </div>
   );
 }
