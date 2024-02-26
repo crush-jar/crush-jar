@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Audit from "./pages/audit/Audit";
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -15,14 +15,14 @@ const queryClient = new QueryClient()
 
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path="audit" element={<Audit />} />
-        </Routes>
-      </BrowserRouter>
-    </QueryClientProvider>
+      <HashRouter>
+        <QueryClientProvider client={queryClient}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/audit" element={<Audit />} />
+          </Routes>
+        </QueryClientProvider>
+      </HashRouter>
   </React.StrictMode>
 );
 
