@@ -1,13 +1,14 @@
 import React from 'react';
-import Profile from './components/profile/Profile'
-import Jar from './components/jar/Jar'
-import './App.css';
-import './scss/custom.scss';
-import money from './components/jar/images/money.png'
+import Profile from '../../components/profile/Profile'
+import Jar from '../../components/jar/Jar'
+import '../App.css';
+import '../scss/custom.scss';
+import money from '../../components/jar/images/money.png'
 import { useState, useMemo, useCallback } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-function App() {
+function Home() {
+  const queryClient = new QueryClient()
   const [mentions, setMentions] = useState<any[]>([])
   const [audit, setAudit] = useState<any[]>([])
   const [totalMentions, setTotalMentions] = useState(0)
@@ -70,4 +71,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

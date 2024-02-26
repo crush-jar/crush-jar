@@ -1,0 +1,20 @@
+.audit {
+  font-family: Apple Chancery, cursive;
+  font-weight: 1000;
+}
+
+.audit-body {
+  margin: 5vh;
+  font-size: 2.5vw;
+  color: #EEE2E4;
+  text-align: center;
+  align-self: center;
+}
+
+.audit-header {
+  margin: 5vh;
+  font-size: 7vw;
+  color: #EEE2E4;
+  text-align: center;
+  align-self: center;
+}
