@@ -15,11 +15,11 @@
 /* Most smart phones */
 @media only screen and (max-device-width : 700px) and (min-device-width : 300px) {
   .head-image {
-    max-height: 50vw;
+    max-height: 40vw;
   }
 
   .text-on-image {
-    font-size: 15vw;
+    font-size: 8vw;
   }
 }
 
