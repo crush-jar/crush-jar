@@ -5,7 +5,6 @@ import '../scss/custom.scss';
 import { callPostApi } from '../Functions'
 import { useState, useMemo, useCallback } from 'react';
 import { Link } from "react-router-dom";
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import CottageIcon from '@mui/icons-material/Cottage';
 
 function Audit() {
